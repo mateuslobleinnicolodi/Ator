@@ -17,4 +17,31 @@ public class controladorAtor {
             JOptionPane.showMessageDialog(null, "Erro!");
         }
 }
+
+    public static void alterar(Manutencao_Ator man){
+        Ator objeto = new Ator();
+        //definir todos os atributos
+        objeto.setCodigo(Integer.parseInt(man.jtfCodigo.getText()));
+        objeto.setNome_real(man.jtfNome_real.getText());
+        objeto.setNome_art(man.jtfNome_art.getText());
+        
+        boolean resultado = AtorDao.alterar(objeto);
+        if (resultado) {
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro!");
+        }
+    }
+
+    public static void excluir(Manutencao_Ator man){
+        Ator objeto = new Ator();
+        objeto.setCodigo(Integer.parseInt(man.jtfCodigo.getText())); //só precisa definir a chave primeira
+        
+        boolean resultado = AtorDao.excluir(objeto);
+        if (resultado) {
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro!");
+        }
+    }
 }
